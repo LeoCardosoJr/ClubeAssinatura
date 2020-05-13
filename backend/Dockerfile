@@ -4,10 +4,10 @@ EXPOSE 3000
 
 WORKDIR /home/app/api
 
-# COPY package*.json ./
+COPY package*.json ./
 
-# RUN npm install
+RUN npm install
 
-# COPY . /home/app/api
+COPY . /home/app/api
 
 CMD ["npm", "run", "dev"]
