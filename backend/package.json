@@ -1,0 +1,20 @@
+{
+  "name": "clubeassinatura-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/index.js",
+    "start:dev": "nodemon --inspect=0.0.0.0:3000 dist/index.js",
+    "dev": "nodemon ./server.js localhost 3000"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

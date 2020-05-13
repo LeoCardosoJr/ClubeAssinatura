@@ -1,0 +1,52 @@
+version: '3'
+services:
+    app:
+        build: 
+            context: ./backend
+        image: nodejs
+        container_name: nodejs
+        depends_on:
+            - postgres-compose
+        ports:
+            - '3000:3000'
+        env_file: .env
+        volumes:
+            - ./backend:/home/app/api
+        networks:
+            - postgres-compose-network
+
+    app-ui:
+        build: ./frontend
+        ports:
+            - '4200:4200'
+        volumes:
+            - ./frontend:/home/app/ui
+            - /home/app/ui/node_modules
+
+    postgres-compose:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: Postgre2020!
+        ports:
+            - '15432:5432'
+        volumes:
+            - '/home/leonardo/Dev/train/nodejs/node-di/postgresql:/var/lib/postgresql/data'
+        restart: always
+        networks:
+            - postgres-compose-network
+
+    pgadmin-compose:
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: leonardo.car.jr@gmail.com
+            PGADMIN_DEFAULT_PASSWORD: Postgre2020!
+        ports:
+            - '16543:80'
+        depends_on:
+            - postgres-compose
+        networks:
+            - postgres-compose-network
+
+networks:
+    postgres-compose-network:
+        driver: bridge
