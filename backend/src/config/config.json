@@ -1,0 +1,12 @@
+{
+    "dev_container": {
+        "dialect": "postgres",
+        "port": 5432,
+        "host": "postgres-compose",
+        "schema": "public",
+        "database": "clubeassinatura",
+        "username": "postgres",
+        "password": "Postgre2020!",
+        "logging": false
+    }
+}
